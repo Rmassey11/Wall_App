@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+</head>
+<body>
+    <h1>{{User.first_name}} {{User.last_name}}'s Quotes</h1>
+    <div style="display: inline;margin-left: 400px;">
+        <a href="/quotes/back">back</a>
+        <form action="/quotes/logout" method="post" style="display: inline;">
+            {% csrf_token %}
+            <input type="Submit" value="Log Out">
+        </form>
+    </div>
+    {% for quote in AllQuotes %}
+        <div style="border: 1px solid black; max-width: 200px;">
+            <p>{{quote.author}}: {{quote.quote_desc}}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>

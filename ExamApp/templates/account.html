@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Account</title>
+</head>
+<body>
+    <h1>Edit My Account</h1>
+    <div style="margin-left: 400px;display: inline;">
+        <a href="/quotes/back">back</a>
+        <form action="/quotes/logout" method="post" style="display: inline;">
+        {% csrf_token %}
+        <input type="Submit" value="Log Out">
+        </form>
+    </div>
+    <form action="/quotes/edit" method="post">
+        {% csrf_token %}
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" id="first_name" value="{{User.first_name}}"><br>
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" id="last_name" value="{{User.last_name}}"><br>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" value="{{User.email}}"><br>
+        <input type="hidden" name="Id" id="Id" value="{{User.id}}">
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>
